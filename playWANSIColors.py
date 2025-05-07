@@ -104,7 +104,7 @@ print("\n\u001b[1mNow some stuff from the Wikipedia page thank you Thomas Dickey
 # https://github.com/ThomasDickey/xterm-snapshots/blob/master/XTerm-col.ad
 # https://github.com/ThomasDickey/xterm-snapshots/blob/master/256colres.pl
 
-print("colors 0-16 correspond to the ANSI and aixterm naming")
+print("\n\u001b[1mColors 0-16 correspond to the ANSI and aixterm naming\u001b[0m\n\n")
 for code in range(0, 16):
     if code > 8:
         level = 255
@@ -115,9 +115,9 @@ for code in range(0, 16):
     r = 127 if code == 8 else level if (code & 1) != 0 else 92 if code == 12 else 0
     g = 127 if code == 8 else level if (code & 2) != 0 else 92 if code == 12 else 0
     b = 127 if code == 8 else 238 if code == 4 else level if (code & 4) != 0 else 0
-    print(f"{code:3d}: {r:02X} {g:02X} {b:02X}")
+    print(f"{code:3d}: \u001b[48;2;{r};{g};{b}m        \u001b[0m   {r:02X} {g:02X} {b:02X}")
 
-print("colors 16-231 are a 6x6x6 color cube")
+print("\n\u001b[1mColors 16-231 are a 6x6x6 color cube\u001b[0m\n\n")
 for red in range(0, 6):
     for green in range(0, 6):
         for blue in range(0, 6):
@@ -125,11 +125,11 @@ for red in range(0, 6):
             r = red   * 40 + 55 if red   != 0 else 0
             g = green * 40 + 55 if green != 0 else 0
             b = blue  * 40 + 55 if blue  != 0 else 0
-            print(f"{code:3d}: {r:02X} {g:02X} {b:02X}")
+            print(f"{code:3d}: \u001b[48;2;{r};{g};{b}m        \u001b[0m   {r:02X} {g:02X} {b:02X}")
 
-print("colors 232-255 are a grayscale ramp, intentionally leaving out black and white")
+print("\n\u001b[1mColors 232-255 are a grayscale ramp, intentionally leaving out black and white\u001b[0m\n\n")
 code = 232
 for gray in range(0, 24):
     level = gray * 10 + 8
     code = 232 + gray
-    print(f"{code:3d}: {level:02X} {level:02X} {level:02X}")
+    print(f"{code:3d}: \u001b[30;48;2;{level};{level};{level}m        \u001b[0m   {level:02X} {level:02X} {level:02X}")
