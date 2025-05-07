@@ -57,6 +57,9 @@ print(f"{COLORS['2xx']}This is a 2xx status code message{RESET}")
 for color_name, color_code in ANSI_COLORS.items():
     print(f"{color_code}This is {color_name} text{RESET}")
 
+
+print("\n\u001b[1;35;46mHere's on with bold and BG and FG\u001b[0m: \n")
+
 # 256 COLORS
 # 256 colors are represented by numbers from 0 to 255.
 # The first 16 colors are the standard ANSI colors.
@@ -76,12 +79,15 @@ for r in range(0, 256, 51):
     for g in range(0, 256, 51):
         for b in range(0, 256, 51):
             print(f"\u001b[38;2;{r};{g};{b}mColor ({r}, {g}, {b})\u001b[0m", end=' ')
-        print()  # New line after each row
+        print("\n")  # New line after each row
+
 # 256 colors with background
+print("\n\u001b[1m256 colors with background\u001b[0m: \n")
 for i in range(256):
     print(f"\u001b[48;5;{i}mColor {i}\u001b[0m", end=' ')
     if (i + 1) % 16 == 0:
         print("\n")  # New line every 16 colors
+
 # 24-bit RGB colors with background
 print("\n\u001b[1m24-bit RGB colors with background\u001b[0m: \n")
 for r in range(0, 256, 51):
@@ -89,3 +95,41 @@ for r in range(0, 256, 51):
         for b in range(0, 256, 51):
             print(f"\u001b[48;2;{r};{g};{b}mColor ({r}, {g}, {b})\u001b[0m", end=' ')
         print("\n")  # New line after each row
+
+print("\n\u001b[1mNow some stuff from the Wikipedia page thank you Thomas Dickey\u001b[0m: \n")
+# print a list of the 256-color red/green/blue values used by xterm.
+#
+# reference:
+# https://github.com/ThomasDickey/ncurses-snapshots/blob/master/test/xterm-16color.dat
+# https://github.com/ThomasDickey/xterm-snapshots/blob/master/XTerm-col.ad
+# https://github.com/ThomasDickey/xterm-snapshots/blob/master/256colres.pl
+
+print("colors 0-16 correspond to the ANSI and aixterm naming")
+for code in range(0, 16):
+    if code > 8:
+        level = 255
+    elif code == 7:
+        level = 229
+    else:
+        level = 205
+    r = 127 if code == 8 else level if (code & 1) != 0 else 92 if code == 12 else 0
+    g = 127 if code == 8 else level if (code & 2) != 0 else 92 if code == 12 else 0
+    b = 127 if code == 8 else 238 if code == 4 else level if (code & 4) != 0 else 0
+    print(f"{code:3d}: {r:02X} {g:02X} {b:02X}")
+
+print("colors 16-231 are a 6x6x6 color cube")
+for red in range(0, 6):
+    for green in range(0, 6):
+        for blue in range(0, 6):
+            code = 16 + (red * 36) + (green * 6) + blue
+            r = red   * 40 + 55 if red   != 0 else 0
+            g = green * 40 + 55 if green != 0 else 0
+            b = blue  * 40 + 55 if blue  != 0 else 0
+            print(f"{code:3d}: {r:02X} {g:02X} {b:02X}")
+
+print("colors 232-255 are a grayscale ramp, intentionally leaving out black and white")
+code = 232
+for gray in range(0, 24):
+    level = gray * 10 + 8
+    code = 232 + gray
+    print(f"{code:3d}: {level:02X} {level:02X} {level:02X}")
