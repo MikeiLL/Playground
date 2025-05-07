@@ -9,8 +9,6 @@ ANSI escape codes are used to format text in a terminal, allowing for color chan
 Resource: https://en.wikipedia.org/wiki/ANSI_escape_code#Colors
 """
 
-print("\u001b[31mRed is 31m\u001b[0m")  # Red text
-
 ANSI_COLORS = {
     "black": "\u001b[30m",
     "red": "\u001b[31m",
@@ -54,18 +52,24 @@ RESET = "\u001b[0m"
 print(f"{COLORS['2xx']}This is a 2xx status code message{RESET}")
  """
 
+print("\n\u001b[1m8 basic colors\u001b[0m: \n\n")
 for color_name, color_code in ANSI_COLORS.items():
-    print(f"{color_code}This is {color_name} text{RESET}")
+    if color_name == "black":
+        print(f"\u001b[47;30mThis is {color_name} text{RESET}")
+    elif color_name == "blue":
+        print(f"\u001b[47;34mThis is {color_name} text{RESET}")
+    else:
+      print(f"{color_code}This is {color_name} text{RESET}")
 
 
-print("\n\u001b[1;35;46mHere's on with bold and BG and FG\u001b[0m: \n")
+print("\n\u001b[35;42;4;1;mHere's one with bold underline and BG and FG\u001b[0m: \n")
 
 # 256 COLORS
 # 256 colors are represented by numbers from 0 to 255.
 # The first 16 colors are the standard ANSI colors.
 # The next 216 colors are a 6x6x6 RGB cube, which gives you a range of colors.
 # The last 40 colors are grayscale colors.
-print("\n\u001b[1m256 colors\u001b[0m: \n")
+print("\n\u001b[1m256 colors\u001b[0m: \n\n")
 for i in range(256):
     print(f"\u001b[38;5;{i}mColor {i}\u001b[0m", end=' ')
     if (i + 1) % 16 == 0:
