@@ -62,6 +62,7 @@ for color_name, color_code in ANSI_COLORS.items():
 # The first 16 colors are the standard ANSI colors.
 # The next 216 colors are a 6x6x6 RGB cube, which gives you a range of colors.
 # The last 40 colors are grayscale colors.
+print("\n\u001b[1m256 colors\u001b[0m: \n")
 for i in range(256):
     print(f"\u001b[38;5;{i}mColor {i}\u001b[0m", end=' ')
     if (i + 1) % 16 == 0:
@@ -70,6 +71,7 @@ for i in range(256):
 # 24-bit RGB colors are represented by three numbers, each ranging from 0 to 255.
 # This allows for over 16 million colors.
 # The format is \u001b[38;2;<r>;<g>;<b>m where <r>, <g>, and <b> are the red, green, and blue values respectively.
+print("\n\u001b[1m24-bit RGB colors\u001b[0m: \n")
 for r in range(0, 256, 51):
     for g in range(0, 256, 51):
         for b in range(0, 256, 51):
@@ -79,10 +81,11 @@ for r in range(0, 256, 51):
 for i in range(256):
     print(f"\u001b[48;5;{i}mColor {i}\u001b[0m", end=' ')
     if (i + 1) % 16 == 0:
-        print()  # New line every 16 colors
+        print("\n")  # New line every 16 colors
 # 24-bit RGB colors with background
+print("\n\u001b[1m24-bit RGB colors with background\u001b[0m: \n")
 for r in range(0, 256, 51):
     for g in range(0, 256, 51):
         for b in range(0, 256, 51):
             print(f"\u001b[48;2;{r};{g};{b}mColor ({r}, {g}, {b})\u001b[0m", end=' ')
-        print()  # New line after each row
+        print("\n")  # New line after each row
