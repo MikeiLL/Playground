@@ -7,6 +7,7 @@ Stands for "American National Standards Institute"
 ANSI escape codes are a standard for in-band signaling to control cursor location, color, font styling, and other options on text terminals.
 ANSI escape codes are used to format text in a terminal, allowing for color changes, text styles (like bold or underline), and cursor movements.
 Resource: https://en.wikipedia.org/wiki/ANSI_escape_code#Colors
+Resource: https://stackoverflow.com/a/33206814/2223106
 """
 
 ANSI_COLORS = {
