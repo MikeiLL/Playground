@@ -1,0 +1,8 @@
+psycopg2
+flask
+clize
+bcrypt
+flask_login
+flask_sockets
+gevent
+gunicorn
