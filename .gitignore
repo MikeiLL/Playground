@@ -4,3 +4,4 @@ ashirahpython
 venv
 .venv
 __pycache*
+.env
