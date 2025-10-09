@@ -1,3 +1,6 @@
 Saturday-Mornings
 mkcontacts
 ashirahpython
+venv
+.venv
+__pycache*
