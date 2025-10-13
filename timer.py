@@ -18,7 +18,7 @@ else:
 seconds = minutes * 60
 for remaining in range(seconds, 0, -5):
     sys.stdout.write("\r")
-    color = "\033[0;32m" if remaining / seconds >= .6 else "\033[0;36m" if remaining / seconds >= .3 else "\033[0;31m" #green else if .5 yellow else red
+    color = "\033[0;32m" if remaining / seconds >= .6 else "\033[0;36m" if remaining / seconds >= .4 else "\033[0;33m" if remaining / seconds >= .25 else "\033[0;31m" #green else if .5 yellow else red
     sys.stdout.write("{} {:}:{:02} {}".format(color, remaining // 60, remaining % 60, (math.floor(remaining / 5) * "x")))
     sys.stdout.flush()
     time.sleep(5)
