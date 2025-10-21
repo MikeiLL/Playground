@@ -12,6 +12,7 @@ public class Movie
   public string? Title { get; set; } = string.Empty;
 
   [Display(Name = "Release Date")]
+  [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
   [DataType(DataType.Date)]
   public DateTime ReleaseDate { get; set; }
 
@@ -25,8 +26,6 @@ public class Movie
   [DataType(DataType.Currency)]
   public decimal Price { get; set; }
 
-  [StringLength(5)]
-  [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s]*$")]
-  [Required]
+  [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s]*$"), Required, StringLength(30)]
   public string Rating { get; set; } = string.Empty;
 }
