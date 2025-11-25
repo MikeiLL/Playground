@@ -21,16 +21,18 @@ def lols(s: str) -> int:
     left = 0
     for right in range(len(s)):
         if s[right] not in charMap or charMap[s[right]] < left:
+            if ((charMap.get(s[right]) or 1000) < left):
+                print("\033[0;32mGot one for %s, map: %s left: %s right: %s.\033[0;0m" % (s[right], charMap.get(s[right]), left, right))
             charMap[s[right]] = right
             longest = max(longest, right - left + 1)
         else:
             left = charMap[s[right]] + 1
             charMap[s[right]] = right
-        #print(charMap)
+        print(charMap, left)
     return longest
 
-print(lols("aaclaxlphabbb")) # 6
-print(lols("aaclaxlphabygbb")) # 8
-print(lols("")) # 0
-print(lols("aaclaxlphabyglphabygaaabb")) # 8
-print(lols("aaclaxlphabayglphabygaaabb")) # 7
+#print(lols("aaclaxlphabbb")) # 6
+#print(lols("aaclaxlphabygbb")) # 8
+#print(lols("")) # 0
+print(lols("pphapahabyzygaaabb")) # 6
+#print(lols("aaclaxlphabayglphabygaaabb")) # 7
