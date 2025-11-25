@@ -1,12 +1,16 @@
 '''
 Use a hash map to store the last index of each character.
 use 'left' and 'right' index indicators to evaluate contents of a siding window
-loop through the string by right index and if char is not present in the map, add it at the index of ch
-increment right index
-potentially incremenet longest
-if char is present, set left to the index of the char in the map + 1
-set the index of the char in the map to the current index
-increment right index
+loop through the string by right index
+  AND within the loop
+    IF char IS NOT present in the map,
+      add it at the index of ch
+    increment right index
+    IF window size > longest, incremenet longest
+    IF char IS present
+      set left to the index of the char in the map + 1
+    set the index of the char in the map to the current index
+    increment right index
 return longest
 '''
 
