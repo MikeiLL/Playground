@@ -7,7 +7,7 @@ function len_longestsubstr(str) {
   let left = 0;
   const seen = {};
   let longest = 0;
-  for (const right of Array(str.length).keys()) {
+  for (let right = 0; right < str.length;right++) {
     console.log({
       "string": str,
       "substring": str.substring(left, right),

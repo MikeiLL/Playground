@@ -12,9 +12,17 @@ loop through the string by right index
     IF window size > longest, incremenet longest
     ELSE (char IS present)
       set left to the index of the char->value in the map + 1
-    set the index of the char in the map to the current index
-    increment right index
+      set the value of the char in the map to the current index
 return longest
+
+RIGHT moves along at each character
+  adding it to SEEN
+  and possibly incrementing LONGEST
+_EXCEPT_ if it is already SEEN
+_OR_ we are not yet at the last position we saw it
+  _IN WHICH CASE_
+move LEFT to one more than the last index we saw it
+  AND reset where we saw it to RIGHT
 '''
 
 def lols(s: str) -> int:
@@ -23,11 +31,10 @@ def lols(s: str) -> int:
     left = 0
     for right in range(len(s)):
         if s[right] not in charMap or charMap[s[right]] < left:
-            charMap[s[right]] = right
             longest = max(longest, right - left + 1)
         else:
             left = charMap[s[right]] + 1
-            charMap[s[right]] = right
+        charMap[s[right]] = right
     return longest
 
 print(lols("aaclaxlphabbb") == 6) # claxlp
