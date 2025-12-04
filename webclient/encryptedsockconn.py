@@ -12,6 +12,7 @@ with socket.create_connection(("sikorsky6.mustardmine.com", 443)) as sock:
     # now we make an SSL handshake, (because cert-required is the default) checking
     # response encryption keys
     # against local ssl certificate authority file cacert.pem or something
+    # eg https://curl.se/docs/caextract.html
     sock.send(b"GET /404 HTTP/1.0\r\n\r\n")
     print(sock.recv(1024).decode()) # get 1024 bytes (up to 1KB)
     """
