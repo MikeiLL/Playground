@@ -12,6 +12,7 @@ hostname = 'www.python.org'
     with context.wrap_socket(sock, server_hostname=hostname) as ssock:
         print(ssock.version()) """
 context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
+# probabaly installed via openssl and/or homebrew
 context.load_verify_locations('/usr/local/etc/openssl@3/certs/cacert.pem')
 sock=socket.create_connection((hostname, 443))
 ssock=context.wrap_socket(sock, server_hostname=hostname)
