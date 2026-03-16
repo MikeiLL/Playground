@@ -14,9 +14,19 @@ ssl.get_server_certificate((hostname,443))
 """ with socket.create_connection((hostname, 443)) as sock:
     with context.wrap_socket(sock, server_hostname=hostname) as ssock:
         print(ssock.version()) """
-context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
+
+context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
+#if need to chose yourself ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
+#but https://docs.python.org/3/library/ssl.html#ssl.create_default_context
+#Return a new SSLContext object with default settings for the given
+# purpose. The settings are chosen by the ssl module, and usually
+# represent a higher security level than when calling the SSLContext
+# constructor directly.
+
+
 # probabaly installed via openssl and/or homebrew
 context.load_verify_locations('/usr/local/etc/openssl@3/certs/cacert.pem')
+pprint.pprint(context.get_ciphers()) #openssl ciphers -V
 sock=socket.create_connection((hostname, 443))
 ssock=context.wrap_socket(sock, server_hostname=hostname) # <- asymmetric handshake happens here. session key agreed upon
 print('version: ', ssock.version())
@@ -72,5 +82,7 @@ soup = bs4.BeautifulSoup(buf)
 
 # note that closing the SSLSocket will also close the underlying socket
 ssock.close()
-
-# openssl ciphers -V
+#Wireshark capture filter (for gideon.rosuav.com)
+# host 37.61.205.138 or host 2a01:488:67:1000:253d:cd8a:0:1
+#Look for Client Hello, Server Hello
+#SYN, ACK, RST, PSH etc...
