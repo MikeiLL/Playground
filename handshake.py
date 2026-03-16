@@ -8,6 +8,9 @@ https://docs.python.org/3.12/library/ssl.html
 hostname = 'www.python.org'
 #context = ssl.create_default_context()
 
+# PROTOCOL_TLS_CLIENT requires valid cert chain and hostname
+ssl.get_server_certificate((hostname,443))
+
 """ with socket.create_connection((hostname, 443)) as sock:
     with context.wrap_socket(sock, server_hostname=hostname) as ssock:
         print(ssock.version()) """
@@ -16,12 +19,25 @@ context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
 context.load_verify_locations('/usr/local/etc/openssl@3/certs/cacert.pem')
 sock=socket.create_connection((hostname, 443))
 ssock=context.wrap_socket(sock, server_hostname=hostname)
-print(ssock.version())
-# PROTOCOL_TLS_CLIENT requires valid cert chain and hostname
-
-ssl.get_server_certificate((hostname,443))
-
+print('version: ', ssock.version())
+print('cypher: ', ssock.cipher())
 pprint.pprint(ssock.getpeercert())
+# interesting? https://medium.com/@cumulus13/building-bulletproof-ssl-tls-connections-in-python-a-developers-guide-to-secure-socket-4cb1c2d9544e
+#buf=bytearray(1024)
+#bytes_received = ssock.recv_into(buf)
+#print(f'Received {bytes_received} bytes: {buf[:bytes_received].decode()}')
+# Send an HTTP GET request
+request = f"GET / HTTP/1.1\r\nHost: {hostname}\r\n\r\n"
+ssock.sendall(request.encode('utf-8'))
+response = ssock.recv(1048)  # Buffer size of 1048 bytes 2**10 (2**12 = 4096)
+print(response.decode('utf-8'))
+#NOTE: When the connect completes, the socket s can be
+#used to send in a request for the text of the page.
+# The same socket will read the reply, and then be destroyed.
+# That’s right, destroyed. Client sockets are normally only
+# used for one exchange (or a small set of sequential exchanges).
+#   https://docs.python.org/3.15/howto/sockets.html
+
 # note that closing the SSLSocket will also close the underlying socket
 ssock.close()
 
