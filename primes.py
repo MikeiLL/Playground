@@ -52,6 +52,8 @@ d=1/43 mod 984
   of this congruence, which form a congruence class with respect
   to this modulus.
 
+    https://en.wikipedia.org/wiki/Modular_multiplicative_inverse
+
   # Iterative python code to find it.
   """
 def imod(a,n):
