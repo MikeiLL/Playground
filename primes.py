@@ -31,9 +31,17 @@ c = 996 894 379 631 894 82 379 852 631 677 677 194 893
 # Steps
 d*e = 1 mod (p-1)(q-1)
 d*43 = 1 mod (83-1)(13-1)
-d=1/43 mod 984
+d=1/43 mod 984 in the field "mod 984" what will yield the number 1?
+  >>> 1/43 % 984
+  d = 0.023255813953488372
+  # why is this number so smalle when we are expecting a large one?
+  # this is because in computers the mathematics happens _before_ modulo,
+  # while in mathematics the computation needs to happend _within_ modulo
+  # in computer science generally you can only use modulo reliably with
+  #addition and multiplication, sometimes subtraction.
+  # Python _does_ support multiplicative inverse operation, though:
   >>> pow(43, -1, 984)
-  595
+  595 -> this is the smallest positive number
 
   ### More side notes
   From Wikipedia, the free encyclopedia
