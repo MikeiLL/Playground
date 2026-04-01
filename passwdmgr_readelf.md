@@ -235,3 +235,5 @@ Reading symbols from pass_manager-x32...
 (gdb) show language
 The current source language is "auto; currently c". 
 ```
+
+[this YT might help](https://youtu.be/Dq8l1_-QgAc?si=ubk0Hx1LFXINolvo)
