@@ -144,3 +144,94 @@ secure_passmgr.go
 ```
 
 The leftmost column is the location so the 1 password part is at `00051280`.
+
+Okay this is interesting:
+```
+$ strings out_objdump_data | grep pass
+runtime.SetFinalizer: cannot pass 
+reflect: nil type passed to Type.Implements
+reflect: nil type passed to Type.AssignableTo
+reflect: nil type passed to Type.ConvertibleTo
+Welcome back! You currently have 1 password stored:
+reflect: non-interface type passed to Type.Implements
+Simple Password Manager. Enter master password to begin: 
+```
+
+And there is this:
+```
+$ hd out_objdump_data | grep pass
+0004f970  65 20 70 61 73 73 65 64  20 74 6f 20 54 79 70 65  |e passed to Type|
+00050db0  65 20 70 61 73 73 65 64  20 74 6f 20 54 79 70 65  |e passed to Type|
+00050df0  65 20 70 61 73 73 65 64  20 74 6f 20 54 79 70 65  |e passed to Type|
+00051280  20 31 20 70 61 73 73 77  6f 72 64 20 73 74 6f 72  | 1 password stor|
+00052c30  65 72 66 61 63 65 20 74  79 70 65 20 70 61 73 73  |erface type pass|
+00052ec0  61 73 74 65 72 20 70 61  73 73 77 6f 72 64 20 74  |aster password t|
+```
+
+In `ghex` I scrolled down to the `00051260` line and found in the ascii column "Welcome back... 1 password stored" and confirmed the hex values match with python:
+```
+>>> hex(ord("W"))
+'0x57'
+>>> hex(ord("e"))
+'0x65'
+>>> hex(ord(":"))
+'0x3a'
+```
+Or
+```
+>>> for x in [0x57, 0x65, 0x6c, 0x63, 0x6f]: print(chr(x))
+... 
+W
+e
+l
+c
+o
+```
+Unfortunately following the colon it's just a bunch of zeroes and then the next string: `[]struct`. Fuck.
+
+There's a check security utility:
+```
+$ checksec --file=pass_manager-x32
+RELRO           STACK CANARY      NX            PIE             RPATH      RUNPATH	Symbols		FORTIFYFortified	Fortifiable	FILE
+No RELRO        No canary found   NX enabled    No PIE          No RPATH   No RUNPATH   No Symbols	  No	00		pass_manager-x32
+```
+
+Here's a [medium article](https://medium.com/@elmin.farzaliyev/elf-files-unmasked-a-practical-guide-15b9036b9a01) about reverse engineering elf files. The article mentions a util called [gdb](http://www.gnu.org/software/gdb/documentation/). The gdb docs are [here](https://sourceware.org/gdb/current/onlinedocs/gdb.html/).
+
+Okay made the file executable `chmod u+x pass_manager-x32` and can now run:
+```
+mike@oduwa:~/cyber$ ./pass_manager-x32 
+usage: ./pass_manager-x32 <uid>
+```
+Okay they gave us a uid:
+```
+mike@oduwa:~/cyber$ ./pass_manager-x32 34678beb895f9a9b61acef375dcd7375
+Simple Password Manager. Enter master password to begin: 
+-> password
+Intruder alert!
+```
+
+Run it again and don't enter a password. While running, inspect with gdb:
+```
+$ gdb pass_manager-x32 
+GNU gdb (Debian 13.1-3) 13.1
+Copyright (C) 2023 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<https://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from pass_manager-x32...
+(No debugging symbols found in pass_manager-x32)
+(gdb)
+(gdb) show language
+The current source language is "auto; currently c". 
+```
