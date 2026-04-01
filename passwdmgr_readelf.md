@@ -121,3 +121,26 @@ What would copying the sections do?
 ```
 objcopy --dump-section .text=input.data.bin --dump-section .text=input.text.bin pass_manager-x32 /dev/null
 ```
+
+Those files have different headers but also not ones in the list of file signatures.
+
+[ELF Mangler](https://github.com/acolomb/elf-mangle) looks interesting.
+
+[How to read and convert hex dumps](https://hextoascii.co/articles/how-to-read-convert-hex-dumps) and it recommends the `xxd` utility which I installed with `sudo apt install xxd` but not sure if it's necessary as we have a bunch of other similar tools at this point. He also mentions `od` or Octal Dump.
+
+Hmmm the `strings` utility (referenced [in the yt video](https://www.youtube.com/watch?v=FNyo1CSxBrg)) output looks interesting: 
+```
+strings pass_manager-x32 | grep pass
+runtime.SetFinalizer: cannot pass 
+reflect: nil type passed to Type.Implements
+reflect: nil type passed to Type.AssignableTo
+reflect: nil type passed to Type.ConvertibleTo
+Welcome back! You currently have 1 password stored:
+reflect: non-interface type passed to Type.Implements
+Simple Password Manager. Enter master password to begin: 
+runtime.mapassign1
+reflect.mapassign
+secure_passmgr.go
+```
+
+The leftmost column is the location so the 1 password part is at `00051280`.
