@@ -236,7 +236,7 @@ Reading symbols from pass_manager-x32...
 The current source language is "auto; currently c". 
 ```
 
-[this YT might help](https://youtu.be/Dq8l1_-QgAc?si=ubk0Hx1LFXINolvo)
+[this YT might help](https://youtu.be/Dq8l1_-QgAc?si=ubk0Hx1LFXINolvo). [This one](https://www.youtube.com/watch?v=8vk5z9VAaBQ) goes deeper into some more sophisticated tools.
 
 ## Reverse Engineering.
 [here's a book and resource list](https://github.com/onethawt/reverseengineering-reading-list)
