@@ -240,3 +240,5 @@ The current source language is "auto; currently c".
 
 ## Reverse Engineering.
 [here's a book and resource list](https://github.com/onethawt/reverseengineering-reading-list)
+
+There's a tool called [angr](https://docs.angr.io/en/latest/quickstart.html#introduction) written in Python that looks pretty good for dynamic analysis of binary files.
