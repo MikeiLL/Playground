@@ -273,3 +273,18 @@ java --version
 Now you can [install Ghidra](https://ghidradocs.com/9.1_PUBLIC/docs/InstallationGuide.html#Install)
 You will need the location of your jdk (java development kit) which you can see with this command `readlink -f $(which java)`. You may need to paste the result of this command in when you first launch Ghidra.
 
+## Ghidra getting started
+If you have [this no file system found issue](https://github.com/NationalSecurityAgency/ghidra/issues/4448) you may need to tar up the binary files in order to open in Ghidra. `tar -cf hello.tar helloworld.o` where `hello.o` is a file I made copying the following code into a file named helloworld.c:
+
+```
+#include <stdio.h>
+ 
+int main(int argc, char **argv) {
+    printf("%s\n", "Hello World");
+    return 0;
+}
+```
+then running `gcc helloworld..c -o helloworld.o`. Now I can open it in Ghidra. [tutorial](https://trove.cyberskyline.com/a275071e7cab4a48a18b229cc44724e9).
+
+
+Let's see what Ghidra does with a tarred version of pass_manager-x64. Double clicking the file name (the file inside the tarball) gives some info. Right-clicking I can run the Code Browser which seems like a good start.
