@@ -21,3 +21,4 @@
 | John the Ripper   | linux, macOS| commandline | | Open Source password security auditing and password recovery tool |
 | Ophcrack | windows | GUI | https://ophcrack.sourceforge.io/ |based on rainbow tables | 
 | Hash Identifier | python (pip) | cmd (commandline) | https://psypanda.github.io/hashID/ | identify type of input hash | |
+| pdf2john         | linux, osx, python (pip) | cmd | https://pypi.org/project/pdf2john/ | access encrypted pdf files |
