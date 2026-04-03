@@ -56,7 +56,7 @@ $ readelf -x .rodata pass_manager-x32 | grep stoptheworld
 ```
 There must be something more though...
 
-- There is a `dd` utility which will "convert and copy a file" (see `man dd`). Out command ends up being:
+- There is a `dd` utility which will "convert and copy a file" (see `man dd`). Our command ends up being:
 - - `dd if=pass_manager-x32 of=out_objdump_text bs=1 count=$((0x9eb00)) skip=$((0x9000))`, which reads through nearly 650000 records into a file called out_objdump_text.
 
 Those records, though, don't seem to be ascii nor very readable. It's raw (binary?) data: 
@@ -288,3 +288,35 @@ then running `gcc helloworld..c -o helloworld.o`. Now I can open it in Ghidra. [
 
 
 Let's see what Ghidra does with a tarred version of pass_manager-x64. Double clicking the file name (the file inside the tarball) gives some info. Right-clicking I can run the Code Browser which seems like a good start.
+
+### Success!
+
+In Ghidra, open the program, search for strings. Search for the string "intruder", find way to this function:
+
+```
+  if (local_1f8 == '\0') {
+    local_f0 = "Intruder alert!";
+    local_e8 = 0xf;
+    local_180[0] = 0;
+    local_180[1] = 0;
+    local_e0 = local_180;
+    if (local_e0 == (ulong *)0x0) {
+      local_180[0] = (ulong)uVar4;
+    }
+    local_d8 = 1;
+    local_d0 = 1;
+    FUN_0040cbb0();
+    puVar2 = local_e0;
+    *local_e0 = local_1f0;
+    if (DAT_005bd284 == '\0') {
+      puVar2[1] = (ulong)uStack_1f7 << 8;
+    }
+    else {
+      FUN_004100b0();
+    }
+    FUN_0045d910();
+  }
+  else {
+```
+
+Scroll down and find the text line that includes the single user and password. Note `\t` represents a tab.
