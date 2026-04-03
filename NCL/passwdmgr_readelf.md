@@ -267,5 +267,9 @@ add-apt-repository -r https://packages.debian.org/trixie/openjdk-25-dists/bookwo
 apt update -y
 # 
 apt install temurin-25-jdk
-
+java --version
+# should show version 25 (or at least 21 or above).
 ```
+Now you can [install Ghidra](https://ghidradocs.com/9.1_PUBLIC/docs/InstallationGuide.html#Install)
+You will need the location of your jdk (java development kit) which you can see with this command `readlink -f $(which java)`. You may need to paste the result of this command in when you first launch Ghidra.
+
