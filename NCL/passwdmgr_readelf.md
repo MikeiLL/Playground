@@ -242,3 +242,30 @@ The current source language is "auto; currently c".
 [here's a book and resource list](https://github.com/onethawt/reverseengineering-reading-list)
 
 There's a tool called [angr](https://docs.angr.io/en/latest/quickstart.html#introduction) written in Python that looks pretty good for dynamic analysis of binary files.
+
+I've decided to install the NSA-developed open-source Reverse Engineering tool, Ghidra, which runs on Java greater than or equal to version 21. Here are the steps for that:
+
+[Instructions for Debian (linux) install (Kali is linux)](https://adoptium.net/installation/linux#_deb_installation_on_debian_or_ubuntu):
+_NOTE_ At one point I had added an apt repository that wasn't passing certificate verification and needed to remove it from:
+`/etc/apt/sources.list.d/archive_uri-https_packages_debian_org_trixie_openjdk-25-jdk-bookworm.list`
+(Removed `deb-src https://packages.debian.org/trixie/openjdk-25-jdk bookworm main`)
+It's also good to be aware of `/etc/apt/sources.list` in general which is where you may need to add sources
+```
+# do all of this as the super user
+sudo su
+# Need to add the encryption key so that apt will be able to validate 
+wget -qO - https://packages.adoptium.net/artifactory/api/gpg/key/public | gpg --dearmor | tee /etc/apt/trusted.gpg.d/adoptium.gpg > /dev/null
+# Note there is now a gpg key at /etc/apt/trusted.gpg.d/adoptium.gpg
+# apt-key list (deprecated but still works)
+# This is a big command with three parts which creates a file at /etc/apt/sources.list.d/adoptium.list with the content
+# deb https://packages.adoptium.net/artifactory/deb bookworm main
+echo "deb https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" | tee /etc/apt/sources.list.d/adoptium.list
+# the middle part uses the awk utility to get the os-release (bookworm in this case) out of the /etc/release file 
+# add a new repository to apt
+add-apt-repository -r https://packages.debian.org/trixie/openjdk-25-dists/bookworn/InRelease
+#
+apt update -y
+# 
+apt install temurin-25-jdk
+
+```
