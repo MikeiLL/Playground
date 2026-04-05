@@ -19,6 +19,7 @@
 | Rumpkin           | any | website | https://rumkin.com/tools/ | collection of web-based tools |
 | Quip quip          | any | website | https://quipqiup.com/ | fast automated cryptogram solver with ads |
 | John the Ripper   | linux, macOS| commandline | | Open Source password security auditing and password recovery tool |
-| Ophcrack | windows | GUI | https://ophcrack.sourceforge.io/ |based on rainbow tables | 
+| Ophcrack | windows | GUI | https://ophcrack.sourceforge.io/ |based on rainbow tables |
 | Hash Identifier | python (pip) | cmd (commandline) | https://psypanda.github.io/hashID/ | identify type of input hash | |
 | pdf2john         | linux, osx, python (pip) | cmd | https://pypi.org/project/pdf2john/ | access encrypted pdf files |
+| uncompyle         | linux, any, pip | cmd | https://pypi.org/project/uncompyle6/ | turn compiled code eg: file.pyc back to readable code eg file.py |
