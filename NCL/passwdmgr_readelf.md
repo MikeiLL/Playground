@@ -320,3 +320,7 @@ In Ghidra, open the program, search for strings. Search for the string "intruder
 ```
 
 Scroll down and find the text line that includes the single user and password. Note `\t` represents a tab.
+
+Now they want the original filename and the master password.
+
+[read this](https://medium.com/@rk-tamang/reverse-engineering-stripped-elf-binaries-a-step-by-step-guide-29cf2a66e652)
