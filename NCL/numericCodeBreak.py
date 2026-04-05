@@ -5,7 +5,9 @@ from collections import Counter
 code = [254, 232, 213, 227, 214, 222, 210, 167, 222, 232, 235, 235, 167, 209, 236, 225, 214, 214, 211, 167, 237, 214, 209, 167, 224, 213, 167, 220, 215, 227, 224, 211, 236, 167, 232, 213, 167, 145, 145, 167, 212, 232, 213, 220, 211, 236, 210]
 ct = Counter(code)
 from pprint import pprint
+word1 = [254, 232, 213, 227, 214, 222, 210, ]
 word2 = [222, 232, 235, 235,]
+word4 = [237, 214, 209]
 pprint(ct)
 '''
 >>> min(code)
@@ -52,6 +54,30 @@ Counter({167: 8,
          212: 1})
 '''
 
+'''
+The most common letters in English, from most to least frequent, are E, T, A, O, I, N, S, H, R, and D. The letter E appears in about 12.7% of words, making it the most frequently used letter.
+'''
+chrmap = {
+    145: "d", 
+    209: "r", 
+    210: "s", 
+    211: " ", #UNLIKELY
+    212: "#", 
+    213: "a", #NO
+    214: "%", #NO
+    215: "-", 
+    220: "-", 
+    222: "-", 
+    224: "-", 
+    225: "-", 
+    227: "~", 
+    167: "e", #MAYBE
+    232: "=", #NO
+    235: "h", 
+    236: "*", #UNLIKELY
+    237: "+", 
+    254: "&", 
+}
 space = 32
 upper_case_start_at = 65
 lower_case_end_at = 122
@@ -59,9 +85,6 @@ lower_case_end_at = 122
 # range btwn chars is 90
 # 254 - 145 range between numbers in code: 109
 # upper case Z = 90
-'''
-The most common letters in English, from most to least frequent, are E, T, A, O, I, N, S, H, R, and D. The letter E appears in about 12.7% of words, making it the most frequently used letter.
-'''
 
 import re
 # may need to install wordlist with apt
@@ -72,12 +95,11 @@ file.close()
 def is_word(word):
     return word.lower() in words
 
-for n in range(50, 159):
-    msg = ""
-    for x in word2:
-        if x-n < 32: print("below 32")
-        else: msg += chr(x - n)
-    if is_word(msg):
-        print("Message: " + msg+"\n")
-    else: print("-")
+msg = ""
+for x in code:
+    msg += chrmap[x]
+if True | is_word(msg):
+    print("Message: " + msg+"\n")
+else: print("Huh???: \t" + msg)
+
 
