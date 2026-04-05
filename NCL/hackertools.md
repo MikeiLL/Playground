@@ -37,3 +37,6 @@
 | OverTheWire | any | website | https://overthewire.org/wargames/bandit/ | practice "war games" in the ssh shell `ssh bandit0@bandit.labs.overthewire.org -p 2220` password `bandit0`|
 | du | cross-platform | cmd | https://man7.org/linux/man-pages/man1/du.1.html | get information about disc usage |
 | df | linux, macOS | cmd | https://man7.org/linux/man-pages/man1/df.1.html | info about free and available disc space |
+| aws checkip | any | website | https://checkip.amazonaws.com/ | quick easy web url to get ip address with cmd: `curl https://checkip.amazonaws.com` |
+| ifconfig (or ipconfig in windows) | all | cmd | | get info about current host IP config |
+| nslookup | cross-platform | cmd |  | get IP info for a domain name |
