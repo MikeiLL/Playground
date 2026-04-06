@@ -40,3 +40,6 @@
 | aws checkip | any | website | https://checkip.amazonaws.com/ | quick easy web url to get ip address with cmd: `curl https://checkip.amazonaws.com` |
 | ifconfig (or ipconfig in windows) | all | cmd | | get info about current host IP config |
 | nslookup | cross-platform | cmd |  | get IP info for a domain name |
+| xgd-open | linux | cmd | https://linux.die.net/man/1/xdg-open | opens a file or URL in the user's preferred application | 
+| ghex | linux | cmd / gui | https://github.com/GNOME/ghex/blob/master/HACKING | view and edit binary files in hex representation |
+| hexedit | linux | cmd | https://linux.die.net/man/1/hexedit | view and edit binary files in hex representation |
