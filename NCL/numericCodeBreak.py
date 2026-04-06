@@ -58,29 +58,37 @@ Counter({167: 8,
 The most common letters in English, from most to least frequent, are E, T, A, O, I, N, S, H, R, and D. The letter E appears in about 12.7% of words, making it the most frequently used letter.
 '''
 chrmap = {
-    145: "d", 
-    209: "r", 
-    210: "s", 
+    145: "d",
+    209: "r",
+    210: "s",
     211: " ", #UNLIKELY
-    212: "#", 
+    212: "#",
     213: "a", #NO
     214: "%", #NO
-    215: "-", 
-    220: "-", 
-    222: "-", 
-    224: "-", 
-    225: "-", 
-    227: "~", 
+    215: "-",
+    220: "-",
+    222: "-",
+    224: "-",
+    225: "-",
+    227: "~",
     167: "e", #MAYBE
     232: "=", #NO
-    235: "h", 
+    235: "h",
     236: "*", #UNLIKELY
-    237: "+", 
-    254: "&", 
+    237: "+",
+    254: "&",
 }
 space = 32
 upper_case_start_at = 65
 lower_case_end_at = 122
+
+def encrypt(msg, key):
+    """
+    utilize a^b^a = a property of xor for
+    simple encryption.
+    """
+    return ''.join([chr(m ^ key) for m in msg])
+
 # 122 - 32 = 90 so
 # range btwn chars is 90
 # 254 - 145 range between numbers in code: 109
@@ -91,15 +99,11 @@ import re
 file = open("/usr/share/dict/words", "r")
 words = re.sub("[^\w]", " ",  file.read()).split()
 file.close()
-    
+
 def is_word(word):
     return word.lower() in words
 
 msg = ""
-for x in code:
-    msg += chrmap[x]
-if True | is_word(msg):
+for n in range(122,182):
+    msg = encrypt(code, n)
     print("Message: " + msg+"\n")
-else: print("Huh???: \t" + msg)
-
-
