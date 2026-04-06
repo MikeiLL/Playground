@@ -43,3 +43,7 @@
 | xgd-open | linux | cmd | https://linux.die.net/man/1/xdg-open | opens a file or URL in the user's preferred application | 
 | ghex | linux | cmd / gui | https://github.com/GNOME/ghex/blob/master/HACKING | view and edit binary files in hex representation |
 | hexedit | linux | cmd | https://linux.die.net/man/1/hexedit | view and edit binary files in hex representation |
+| zfs | linux | cmd | https://linux.die.net/man/8/zfs | configure zfs file system. Zettabyte File System, is an advanced file system that combines volume management and file system capabilities, designed to ensure data integrity and simplify storage management. It features pooled storage, snapshots, and self-healing capabilities, making it robust and scalable for various storage needs. |
+| zdb | linux | cmd | https://manpages.org/zdb/8 | The zdb utility displays information about a ZFS pool useful for debugging and performs some amount of consistency checking. |
+| fsck | linux | cmd | https://manpages.org/zpofsclol/8 | fsck is used to check and optionally repair one or more Linux filesystems.  |
+| zpool | linux | cmd | https://manpages.org/zpool/8 | configures ZFS storage pools ZFS storage pools are a way to manage and organize storage devices, allowing you to combine multiple drives into a single logical unit for data storage. This setup provides features like data integrity, redundancy, and efficient data management through various configurations such as mirroring or RAID-Z |  
