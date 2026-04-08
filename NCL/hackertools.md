@@ -49,4 +49,9 @@
 | zpool | linux | cmd | https://manpages.org/zpool/8 | configures ZFS storage pools ZFS storage pools are a way to manage and organize storage devices, allowing you to combine multiple drives into a single logical unit for data storage. This setup provides features like data integrity, redundancy, and efficient data management through various configurations such as mirroring or RAID-Z |  
 | shasum | linux | cmd | https://manpages.org/checksum/8 | check or print checksum of a file `shasum -a 256 somefile` |
 | Known vulnerabilities catalog | any | website | https://www.cisa.gov/known-exploited-vulnerabilities-catalog | Maintained by Cybersecurity and Infrastructure Agency |
-| aircrack-ng       | linux | cmd |     | Crack WEP wireless encryption |
+| aircrack-ng       | linux | cmd |   https://www.aircrack-ng.org/  | Crack WEP wireless encryption |
+| passlib | any | python package | https://passlib.readthedocs.io/en/stable/ | Passlib is a password hashing library for Python 2 & 3, which provides cross-platform implementations of over 30 password hashing algorithms, as well as a framework for managing existing password hashes. |
+| hashid | python | cmd | https://pypi.org/project/hashID/ | identify hashes|
+| Kali Tool List | any | website | https://www.kali.org/tools | Extensive list of binaries and other hacking and cracking tools  |
+| cryptography | any | python package | https://cryptography.io/en/latest | cryptography includes both high level recipes and low level interfaces to common cryptographic algorithms such as symmetric ciphers, message digests, and key derivation functions. |
+| Crypto101 Book | any | pdf | https://www.crypto101.io/ | introduction to cryptographic concepts |
