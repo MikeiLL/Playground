@@ -48,4 +48,5 @@
 | fsck | linux | cmd | https://manpages.org/zpofsclol/8 | fsck is used to check and optionally repair one or more Linux filesystems.  |
 | zpool | linux | cmd | https://manpages.org/zpool/8 | configures ZFS storage pools ZFS storage pools are a way to manage and organize storage devices, allowing you to combine multiple drives into a single logical unit for data storage. This setup provides features like data integrity, redundancy, and efficient data management through various configurations such as mirroring or RAID-Z |  
 | shasum | linux | cmd | https://manpages.org/checksum/8 | check or print checksum of a file `shasum -a 256 somefile` |
-| Know vulnerabilities catalog | any | website | https://www.cisa.gov/known-exploited-vulnerabilities-catalog | Maintained by Cybersecurity and Infrastructure Agency |
+| Known vulnerabilities catalog | any | website | https://www.cisa.gov/known-exploited-vulnerabilities-catalog | Maintained by Cybersecurity and Infrastructure Agency |
+| aircrack-ng       | linux | cmd |     | Crack WEP wireless encryption |
