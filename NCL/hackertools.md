@@ -7,6 +7,8 @@
 | strings            |                          |                   |                                   | |
 | gunzip             |                          |                   |                                   | |
 | unzip              |                          |                   |                                   |  |
+| file              |                          |                   |                                   | view info about file |
+| exif              |                          |                   |                                   | view image exif metadata |
 | tar                |                          |                   |                                   | flags `-xvf`   |
 | morsecode.world    | any | web site                 | morsecode.world  |   translate morse code                                |
 | cyber chef         |                          |                   |   https://gchq.github.io/CyberChef/ | decrypting tools |
