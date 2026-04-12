@@ -58,3 +58,4 @@
 | cryptography | any | python package | https://cryptography.io/en/latest | cryptography includes both high level recipes and low level interfaces to common cryptographic algorithms such as symmetric ciphers, message digests, and key derivation functions. |
 | Crypto101 Book | any | pdf | https://www.crypto101.io/ | introduction to cryptographic concepts |
 | Google Images | any | website | images.google.com | search based on image upload |
+| Hack Tricks | any | web book| https://github.com/HackTricks-wiki | security resources |
