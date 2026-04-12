@@ -17,3 +17,22 @@ code = [int(n,16) for n in "48 65 20 69 73 20 74 68 65 20 63 68 69 6c 6c 20 74 6
 import base64
 base64.b64decode('VGhleSBjYWxsIG1lIE1lZ2F2b2x0LiBUaGlzIGlzIG15IHBhcnRuZXIgVi5JLg==')
 
+code = [int(c, 16) for c in "4d 54 49 30 49 44 45 31 4d 43 41 78 4e 44 55 67 4d 54 63 78 49 44 41 30 4d 43 41 78 4e 44 4d 67 4d 54 51 78 49 44 45 31 4e 43 41 78 4e 54 51 67 4d 44 51 77 49 44 45 31 4e 53 41 78 4e 44 55 67 4d 44 51 77 49 44 45 78 4d 43 41 78 4e 44 55 67 4d 54 51 78 49 44 45 32 4e 43 41 78 4e 6a 63 67 4d 54 51 78 49 44 45 32 4e 69 41 78 4e 44 55 67 4d 44 55 32 49 44 41 30 4d 43 41 78 4d 6a 51 67 4d 54 55 77 49 44 45 31 4d 53 41 78 4e 6a 4d 67 4d 44 51 77 49 44 45 31 4d 53 41 78 4e 6a 4d 67 4d 44 51 77 49 44 45 31 4e 53 41 78 4e 7a 45 67 4d 44 51 77 49 44 45 32 4d 43 41 78 4e 44 45 67 4d 54 59 79 49 44 45 32 4e 43 41 78 4e 54 59 67 4d 54 51 31 49 44 45 32 4d 69 41 77 4e 44 41 67 4d 54 49 77 49 44 41 31 4e 69 41 78 4d 6a 55 67 4d 44 55 32".split(' ')]
+
+pigpencipyerdecrypt = {"https://www.dcode.fr/tools/pigpen/images/char(65).png": "A",
+                       #...
+                "https://www.dcode.fr/tools/pigpen/images/char(90).png": "Z"
+                }
+""" 
+meet tonight at midnght 
+location outside UmBRCA?E x GARDENS x 
+UNDER x THE x  ASSUT x BRIDGE x  THE x ?O? x 
+IS x IN x A x FA?SE x BRIC? x A?ONG x 
+THE x ?A?? x 
+ONCE x ?OU x ARE x INSIDE x ?HEN x 
+AS?ED x THE x PHE x PASS?ORD x IS x ?AN?IBAR
+FRot0: M
+FFlip: L
+FRot2:
+FRot3:
+"""

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cyber Skyline Lottery — Official</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <h1>Cyber Skyline Lottery</h1>
+      </div>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="/index.html#buy">Buy Ticket</a>
+        <a href="/mytickets.html">My Tickets</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Trustworthy. Secure.</h2>
+      <p class="lead">Play the official Cyber Skyline Lottery — secure ticket purchases and transparent process.</p>
+      <div class="stats">
+        <div>
+          <span class="stat-label">Jackpot</span>
+          <strong class="stat-value">$3,500,000</strong>
+        </div>
+      </div>
+    </section>
+
+    <section id="buy" class="card">
+      <h3>Buy a Ticket</h3>
+      <form id="buyForm" class="form">
+        <label for="numbers">Your numbers (6 numbers 0-99) — comma separated</label>
+        <input id="numbers" name="numbers" placeholder="e.g. 3, 12, 48, 29, 53, 96" required>
+        <div class="form-row">
+          <button type="submit" class="btn primary">Buy Ticket</button>
+          <div id="buyStatus" class="status" aria-live="polite" role="status"></div>
+        </div>
+      </form>
+    </section>
+
+    <section id="faq" class="card">
+      <h3>Frequently Asked Questions</h3>
+      <dl>
+        <dt>Is this real?</dt>
+        <dd>No, you will not get $3,500,000 if you win. This is just a CTF challenge 🙃.</dd>
+        <dt>How can we trust the lottery is fair?</dt>
+        <dd>The Cyber Skyline Lottery runs a transparent draw and keeps a public record of tickets. Also, we have open sourced our secure lottery algorithm, available at <a href="/source">/source</a>.</dd>
+        <dt>How do I claim a jackpot?</dt>
+        <dd>If your redeemed ticket matches the winning numbers, the flag will be displayed prominently on the site!</dd>
+      </dl>
+    </section>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Cyber Skyline Lottery</a></p>
+    </footer>
+  </main>
+
+  <!-- Flag modal (shown on jackpot) -->
+  <div id="flagModal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="flag-window" role="document">
+      <div class="flag-title">JACKPOT!</div>
+      <div id="flagText" class="flag-text" aria-live="polite"></div>
+      <button id="flagClose" class="flag-close">Close</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
