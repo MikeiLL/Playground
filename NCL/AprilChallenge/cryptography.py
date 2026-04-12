@@ -25,14 +25,15 @@ pigpencipyerdecrypt = {"https://www.dcode.fr/tools/pigpen/images/char(65).png": 
                 }
 """ 
 meet tonight at midnght 
-location outside UmBRCA?E x GARDENS x 
-UNDER x THE x  ASSUT x BRIDGE x  THE x ?O? x 
-IS x IN x A x FA?SE x BRIC? x A?ONG x 
-THE x ?A?? x 
-ONCE x ?OU x ARE x INSIDE x ?HEN x 
-AS?ED x THE x PHE x PASS?ORD x IS x ?AN?IBAR
+location outside UmBRCALE x GARDENS x 
+UNDER x THE x  ASSUT x BRIDGE x  
+THE x ?Ol x IS x IN x A x FA?SE x BRIC? x 
+A?ONG x THE x WALL x 
+ONCE x ?OU x ARE x INSIDE x ?HEN x AS?ED x 
+THE x PHE x PASS?ORD x IS x ?AN?IBAR
 FRot0: M
 FFlip: L
-FRot2:
-FRot3:
+FRot2: K
+FRot1: W
+FRot1Flip: Z
 """
