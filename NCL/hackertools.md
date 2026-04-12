@@ -59,3 +59,5 @@
 | Crypto101 Book | any | pdf | https://www.crypto101.io/ | introduction to cryptographic concepts |
 | Google Images | any | website | images.google.com | search based on image upload |
 | Hack Tricks | any | web book| https://github.com/HackTricks-wiki | security resources |
+| List of File Signatures | any | web entry | https://en.wikipedia.org/wiki/List_of_file_signatures | to match against hex |
+| Ida | cross-platform | GUI | https://my.hex-rays.com/login | reverse engineering tool | 
