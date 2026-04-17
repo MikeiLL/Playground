@@ -42,13 +42,13 @@
 | aws checkip | any | website | https://checkip.amazonaws.com/ | quick easy web url to get ip address with cmd: `curl https://checkip.amazonaws.com` |
 | ifconfig (or ipconfig in windows) | all | cmd | | get info about current host IP config |
 | nslookup | cross-platform | cmd |  | get IP info for a domain name |
-| xgd-open | linux | cmd | https://linux.die.net/man/1/xdg-open | opens a file or URL in the user's preferred application | 
+| xgd-open | linux | cmd | https://linux.die.net/man/1/xdg-open | opens a file or URL in the user's preferred application |
 | ghex | linux | cmd / gui | https://github.com/GNOME/ghex/blob/master/HACKING | view and edit binary files in hex representation |
 | hexedit | linux | cmd | https://linux.die.net/man/1/hexedit | view and edit binary files in hex representation |
 | zfs | linux | cmd | https://linux.die.net/man/8/zfs | configure zfs file system. Zettabyte File System, is an advanced file system that combines volume management and file system capabilities, designed to ensure data integrity and simplify storage management. It features pooled storage, snapshots, and self-healing capabilities, making it robust and scalable for various storage needs. |
 | zdb | linux | cmd | https://manpages.org/zdb/8 | The zdb utility displays information about a ZFS pool useful for debugging and performs some amount of consistency checking. |
 | fsck | linux | cmd | https://manpages.org/zpofsclol/8 | fsck is used to check and optionally repair one or more Linux filesystems.  |
-| zpool | linux | cmd | https://manpages.org/zpool/8 | configures ZFS storage pools ZFS storage pools are a way to manage and organize storage devices, allowing you to combine multiple drives into a single logical unit for data storage. This setup provides features like data integrity, redundancy, and efficient data management through various configurations such as mirroring or RAID-Z |  
+| zpool | linux | cmd | https://manpages.org/zpool/8 | configures ZFS storage pools ZFS storage pools are a way to manage and organize storage devices, allowing you to combine multiple drives into a single logical unit for data storage. This setup provides features like data integrity, redundancy, and efficient data management through various configurations such as mirroring or RAID-Z |
 | shasum | linux | cmd | https://manpages.org/checksum/8 | check or print checksum of a file `shasum -a 256 somefile` |
 | Known vulnerabilities catalog | any | website | https://www.cisa.gov/known-exploited-vulnerabilities-catalog | Maintained by Cybersecurity and Infrastructure Agency |
 | aircrack-ng       | linux | cmd |   https://www.aircrack-ng.org/  | Crack WEP wireless encryption |
@@ -60,4 +60,9 @@
 | Google Images | any | website | images.google.com | search based on image upload |
 | Hack Tricks | any | web book| https://github.com/HackTricks-wiki | security resources |
 | List of File Signatures | any | web entry | https://en.wikipedia.org/wiki/List_of_file_signatures | to match against hex |
-| Ida | cross-platform | GUI | https://my.hex-rays.com/login | reverse engineering tool | 
+| Ida | cross-platform | GUI | https://my.hex-rays.com/login | reverse engineering tool |
+| Wordlist Forger | any | python tool | https://github.com/Den-Sec/Wordlist-Forger | create tailored wordlists for use in password cracking techniques such as dictionary attacks, as well as for advanced scenarios requiring custom patterns |
+| psudohash | any | python/pip | https://github.com/t3l3machus/psudohash | Psudohash is a password list generator for orchestrating brute force attacks and cracking hashes. It imitates certain password creation patterns commonly used by humans |
+| VulnHub | any | website | https://www.vulnhub.com | vernarable scenarios for practicing against |
+| Orange Cyberdefense Github | any | git archive | https://github.com/Orange-Cyberdefense | Set of tools for cyber security, for example active directory mindmaps |
+| OWASP | any | organization | https://owasp.org | The Open Worldwide Application Security Project (OWASP) is a nonprofit foundation that works to improve the security of software. |
