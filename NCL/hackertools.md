@@ -66,3 +66,6 @@
 | VulnHub | any | website | https://www.vulnhub.com | vernarable scenarios for practicing against |
 | Orange Cyberdefense Github | any | git archive | https://github.com/Orange-Cyberdefense | Set of tools for cyber security, for example active directory mindmaps |
 | OWASP | any | organization | https://owasp.org | The Open Worldwide Application Security Project (OWASP) is a nonprofit foundation that works to improve the security of software. |
+| Collin Dewey NCL Tools List | any | web archive | https://collindewey.net/articles/ncl-tool-list/ | Super dope resource list |
+| Wikidata | any | web | https://www.wikidata.org | Wikidata acts as central storage for the structured data of its Wikimedia sister projects including Wikipedia, Wikivoyage, Wiktionary, Wikisource, and others. |
+| Wikidata Query Service | any | web | https://query.wikidata.org | Search through Wikidata using Sparql queries |
