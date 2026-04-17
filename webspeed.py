@@ -26,6 +26,7 @@ def measure_latency(url, num_requests=10):
     return latencies
 
 url = sys.argv[1]
+notes = sys.argv[2] or ""
 if not url.startswith("http:"): url = "https://" + url
 latencies = measure_latency(url)
 
@@ -45,7 +46,7 @@ analyze_latencies(latencies)
 def plot_latencies(latencies):
     plt.figure(figsize=(10, 6))
     plt.plot(latencies, marker='o')
-    plt.title('Website Latency Over Time')
+    plt.title('Website Latency Over Time %s %s' % (url, notes))
     plt.xlabel('Request Number')
     plt.ylabel('Latency (seconds)')
     plt.grid(True)
