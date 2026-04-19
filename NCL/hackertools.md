@@ -69,3 +69,5 @@
 | Collin Dewey NCL Tools List | any | web archive | https://collindewey.net/articles/ncl-tool-list/ | Super dope resource list |
 | Wikidata | any | web | https://www.wikidata.org | Wikidata acts as central storage for the structured data of its Wikimedia sister projects including Wikipedia, Wikivoyage, Wiktionary, Wikisource, and others. |
 | Wikidata Query Service | any | web | https://query.wikidata.org | Search through Wikidata using Sparql queries |
+| tr | linux | apt pkg | https://www.man7.org/linux/man-pages/man1/tr.1.html | I used this to make an entire file uppercase: `
+tr '[:lower:]' '[:upper:]' <  inputfile > outputfile` |
