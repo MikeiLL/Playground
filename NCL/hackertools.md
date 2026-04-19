@@ -58,7 +58,8 @@
 | cryptography | any | python package | https://cryptography.io/en/latest | cryptography includes both high level recipes and low level interfaces to common cryptographic algorithms such as symmetric ciphers, message digests, and key derivation functions. |
 | Crypto101 Book | any | pdf | https://www.crypto101.io/ | introduction to cryptographic concepts |
 | Google Images | any | website | images.google.com | search based on image upload |
-| Hack Tricks | any | web book| https://github.com/HackTricks-wiki | security resources |
+| Hack Tricks | any | web book| https://hacktricks.wiki/en/index.html | security resources |
+| Hack Tricks resources | any | git repo | https://github.com/HackTricks-wiki | as named |
 | List of File Signatures | any | web entry | https://en.wikipedia.org/wiki/List_of_file_signatures | to match against hex |
 | Ida | cross-platform | GUI | https://my.hex-rays.com/login | reverse engineering tool |
 | Wordlist Forger | any | python tool | https://github.com/Den-Sec/Wordlist-Forger | create tailored wordlists for use in password cracking techniques such as dictionary attacks, as well as for advanced scenarios requiring custom patterns |
@@ -69,7 +70,6 @@
 | Collin Dewey NCL Tools List | any | web archive | https://collindewey.net/articles/ncl-tool-list/ | Super dope resource list |
 | Wikidata | any | web | https://www.wikidata.org | Wikidata acts as central storage for the structured data of its Wikimedia sister projects including Wikipedia, Wikivoyage, Wiktionary, Wikisource, and others. |
 | Wikidata Query Service | any | web | https://query.wikidata.org | Search through Wikidata using Sparql queries |
-| tr | linux | apt pkg | https://www.man7.org/linux/man-pages/man1/tr.1.html | I used this to make an entire file uppercase: `
-tr '[:lower:]' '[:upper:]' <  inputfile > outputfile` |
+| tr | linux | apt pkg | https://www.man7.org/linux/man-pages/man1/tr.1.html | I used this to make an entire file uppercase: `tr '[:lower:]' '[:upper:]' <  inputfile > outputfile` |
 | watch | linux | apt cmd | https://www.man7.org/linux/man-pages/man1/tr.1.html | watch - execute a program periodically, showing output fullscreen (try it with `ls -l` or `tree` while downloading files) |
 | tree | linux | cmd | https://www.man7.org/linux/man-pages/man1/tree.1.html | tree - list contents of directories in a tree-like format. |
