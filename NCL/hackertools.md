@@ -71,3 +71,5 @@
 | Wikidata Query Service | any | web | https://query.wikidata.org | Search through Wikidata using Sparql queries |
 | tr | linux | apt pkg | https://www.man7.org/linux/man-pages/man1/tr.1.html | I used this to make an entire file uppercase: `
 tr '[:lower:]' '[:upper:]' <  inputfile > outputfile` |
+| watch | linux | apt cmd | https://www.man7.org/linux/man-pages/man1/tr.1.html | watch - execute a program periodically, showing output fullscreen (try it with `ls -l` or `tree` while downloading files) |
+| tree | linux | cmd | https://www.man7.org/linux/man-pages/man1/tree.1.html | tree - list contents of directories in a tree-like format. |
