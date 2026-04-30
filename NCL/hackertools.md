@@ -75,3 +75,4 @@
 | tree | linux | cmd | https://www.man7.org/linux/man-pages/man1/tree.1.html | tree - list contents of directories in a tree-like format. |
 | Python cryptography | any | package (pip) | https://github.com/pyca/cryptography | cryptographic recipes and primitives for Python |
 | Black Hills InfoSec Hashcat cheatsheet | any | website | https://www.blackhillsinfosec.com/hashcat-cheatsheet | They also have some cool ebooks and training available |
+| Wordlist CTL | any | cmd | https://github.com/BlackArch/wordlistctl | Search hundreds if sites for wordlists | 
