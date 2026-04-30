@@ -90,7 +90,7 @@ def primes(n): # simple sieve of multiples
    sieve = set(sum([list(range(q*q, n+1, q+q)) for q in odds], []))
    return [2] + [p for p in odds if p not in sieve]
 
-ps=primes(50)
+ps=primes(100)
 n = 1079
 e = 43
 c = [996, 894, 379, 631, 894, 82, 379, 852, 631, 677, 677, 194, 893]
@@ -114,3 +114,4 @@ while start <= len(ps) - 1:
 
 d = pow(e, -1, (p-1) * (q-1))
 print(f'd is {d} ( the multiplicative inverse of {p-1} times {q-1} )')
+print("".join([chr(pow(c,d) % n) for c in c]))
