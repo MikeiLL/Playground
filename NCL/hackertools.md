@@ -1,5 +1,8 @@
 # Useful Tools
 
+## Migrated to Brownsville Digital Blog
+https://brownsvilledigital.com/blog
+
 | Tool Name          | Platform                | Type              |    website                        | Description |
 | ------------------ | ------------------------|------------------ |-----------------------------------|--------|
 | binwalk            |   linux                 |   commandline     |                | inspect binary files |
