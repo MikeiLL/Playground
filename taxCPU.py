@@ -54,6 +54,6 @@ def run_thread_pool(task_ids, max_workers=8):
 
 if __name__ == "__main__":
     run_single_threaded(range(10**2))
-    print("Proc by Core: {:0%}".format(psutil.cpu_percent(interval=0.1, percpu=True)))
+    print("Proc by Core: {}".format(psutil.cpu_percent(interval=0.1, percpu=True)))
     run_thread_pool(range(10**2), max_workers=8)
-    print("Proc by Core: {:0%}".format(psutil.cpu_percent(interval=0.1, percpu=True)))
+    print("Proc by Core: {}".format(psutil.cpu_percent(interval=0.1, percpu=True)))
