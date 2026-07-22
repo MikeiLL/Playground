@@ -3,6 +3,9 @@
 Tax CPU and monitor usage
 Thanks to  https://medium.com/@shane-zhang/demystifying-python-concurrency-io-bound-vs-cpu-bound-tasks-64016db696c7
 Run in interactive mode: python -i taxCPU.py
+You can simultaneously monitor:
+  - Windows Task Manager: Press Ctrl + Shift + Esc or right-click the taskbar and select "Task Manager."
+  - Mac Activity Monitor: Open Spotlight Search (Cmd + Space), type "Activity Monitor," and press Enter.
 """
 import os
 import psutil
