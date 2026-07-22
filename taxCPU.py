@@ -23,7 +23,7 @@ def pure_python_task(task_id):
         time.sleep(5**-20)
         result += i * i * (i % 7) + (i % 11) * (i % 13)
         if i % 10**16 == 0:
-          print("Processing used: {:0%}".format(p.cpu_percent() / 100))
+          print("Processing used: {:0%}".format(p.cpu_percent() / 100), end='\r')
     return result
 
 async def async_pure_python_task(task_id):
@@ -32,7 +32,8 @@ async def async_pure_python_task(task_id):
         time.sleep(5**-20)
         result += i * i * (i % 7) + (i % 11) * (i % 13)
         if i % 10**16 == 0:
-          print("Processing used: {:0%}".format(p.cpu_percent() / 100))
+          print("Proc by Core: {:0%}".format(psutil.cpu_percent(interval=0.1, percpu=True)), end='\r')
+          print("Processing used: {:0%}".format(p.cpu_percent() / 100), end='\r')
     return result
 
 def run_single_threaded(task_ids):
@@ -52,5 +53,7 @@ def run_thread_pool(task_ids, max_workers=8):
 
 
 if __name__ == "__main__":
-    run_single_threaded(range(10**4))
-    run_thread_pool(range(10**4), max_workers=8)
+    run_single_threaded(range(10**2))
+    print("Proc by Core: {:0%}".format(psutil.cpu_percent(interval=0.1, percpu=True)))
+    run_thread_pool(range(10**2), max_workers=8)
+    print("Proc by Core: {:0%}".format(psutil.cpu_percent(interval=0.1, percpu=True)))
