@@ -27,13 +27,13 @@ def pure_python_task(task_id):
     return result
 
 async def async_pure_python_task(task_id):
+    #TODO look into if this would make any difference since not making IO requests.
     result = 0
     for i in range(1000000):
         time.sleep(5**-20)
         result += i * i * (i % 7) + (i % 11) * (i % 13)
         if i % 10**16 == 0:
-          print("Proc by Core: {:0%}".format(psutil.cpu_percent(interval=0.1, percpu=True)), end='\r')
-          print("Processing used: {:0%}".format(p.cpu_percent() / 100), end='\r')
+          print("Processing used (async): {:0%}".format(p.cpu_percent() / 100), end='\r')
     return result
 
 def run_single_threaded(task_ids):
