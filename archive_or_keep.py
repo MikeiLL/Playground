@@ -32,15 +32,38 @@ with open(input_file, newline='') as i:
                             quotechar='|', quoting=csv.QUOTE_MINIMAL)
                 writer.writerow(row)
                 continue
-          if input(f"'y' to keep {row[0]}?") == 'y':
+          print(row)
+          selection = input("input k=keep; a=archive; u=undecided; x=exit; i=mark for inspection")
+          if selection in ['k','i']:
              print("Keeping")
              with open(input_file + "_keep.csv", 'w', newline='') as k:
                 writer = csv.writer(k, delimiter=',',
                             quotechar='|', quoting=csv.QUOTE_MINIMAL)
                 writer.writerow(row)
-          else:
+                if selection == 'i':
+                  with open(input_file + "_inspect.csv", 'w', newline='') as k:
+                    writer = csv.writer(k, delimiter=',',
+                                quotechar='|', quoting=csv.QUOTE_MINIMAL)
+                    writer.writerow(row)
+          elif selection == 'a':
              print("Archiving")
              with open(input_file + "_archive.csv", 'w', newline='') as k:
+                writer = csv.writer(k, delimiter=',',
+                            quotechar='|', quoting=csv.QUOTE_MINIMAL)
+                writer.writerow(row)
+          elif selection == 'u':
+             print("Undecided")
+             with open(input_file + "_wait.csv", 'w', newline='') as k:
+                writer = csv.writer(k, delimiter=',',
+                            quotechar='|', quoting=csv.QUOTE_MINIMAL)
+                writer.writerow(row)
+          elif selection == 'x':
+             print("Exiting")
+             """
+             Now break out of the loop and write all the rest of the file out to a new file with today's date
+             TODO
+             """
+             with open(input_file + "_unparsed.csv", 'w', newline='') as k:
                 writer = csv.writer(k, delimiter=',',
                             quotechar='|', quoting=csv.QUOTE_MINIMAL)
                 writer.writerow(row)
