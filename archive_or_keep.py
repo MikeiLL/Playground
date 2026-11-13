@@ -12,6 +12,7 @@ there isn't an obvious yes or no answer.
 """
 import csv
 import sys
+import time
 
 if len(sys.argv) < 2:
   print("Usage: archive_or_keep.py inputfile.csv")
@@ -23,7 +24,26 @@ with open(input_file, newline='') as i:
     data = csv.reader(i, delimiter=',', quotechar='|')
     for idx, row in enumerate(data):
         try:
-          print(row)
+          if (not row[0].startswith("http")):
+             print("Adding note")
+             time.sleep(0.5)
+             with open("NOTES.csv", 'w', newline='') as notes:
+                writer = csv.writer(notes, delimiter=',',
+                            quotechar='|', quoting=csv.QUOTE_MINIMAL)
+                writer.writerow(row)
+                continue
+          if input(f"'y' to keep {row[0]}?") == 'y':
+             print("Keeping")
+             with open(input_file + "_keep.csv", 'w', newline='') as k:
+                writer = csv.writer(k, delimiter=',',
+                            quotechar='|', quoting=csv.QUOTE_MINIMAL)
+                writer.writerow(row)
+          else:
+             print("Archiving")
+             with open(input_file + "_archive.csv", 'w', newline='') as k:
+                writer = csv.writer(k, delimiter=',',
+                            quotechar='|', quoting=csv.QUOTE_MINIMAL)
+                writer.writerow(row)
         except IndexError:
            print("############\n\tBad one at line", idx)
            print(row)
