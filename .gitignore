@@ -5,3 +5,4 @@ venv
 .venv
 __pycache*
 .env
+lastpass_vault_export.csv
