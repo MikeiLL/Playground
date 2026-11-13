@@ -6,3 +6,6 @@ venv
 __pycache*
 .env
 lastpass_vault_export.csv
+*_archive.csv
+*_keep.csv
+NOTES.csv
