@@ -15,6 +15,7 @@ import csv
 import sys
 import time
 import datetime as dt
+import requests
 
 if len(sys.argv) < 2:
   print("Usage: archive_or_keep.py inputfile.csv")
@@ -41,61 +42,74 @@ with open(INPUT_FILE, newline='') as i:
   data = csv.reader(i, delimiter=',', quotechar='|')
   for idx, row in enumerate(data):
     try:
-      if not QUIT_FOR_NOW and not row[0].startswith("http"):
-        print("Adding note")
-        time.sleep(0.5)
-        with open("vaultexports/NOTES.csv", 'a', newline='') as notes:
-            writer = csv.writer(notes, delimiter=',',
+      if not QUIT_FOR_NOW:
+        print("NOT QUIT_FOR_NOW")
+        if not row[0].startswith("http"):
+          print("Adding note")
+          time.sleep(0.5)
+          with open("vaultexports/NOTES.csv", 'a', newline='') as notes:
+              writer = csv.writer(notes, delimiter=',',
+                          quotechar='|', quoting=csv.QUOTE_MINIMAL)
+              writer.writerow(row)
+              continue
+        print(f"{row[1]} on {row[0].split("//")[1][:22]}") # Web Site
+        try:
+          print("CONNECTING...")
+          r = requests.head(row[0], timeout=2)
+          if r.status_code <= 200 and r.status_code >= 300: color = GREEN
+          elif r.status_code >= 500: color = RED
+          else: color = YELLOW
+          print(f"STATUS: {color}{r.status_code}\033[0m")
+        except Exception as e:
+          print(f"\033[0;33mCould not connect to site: {row[0]} ({e})\033[0m")
+        selection = input(f"#{idx}: \033[0;32mk\033[0m=keep; \033[0;31ma\033[0m=archive; \033[0;36m\033[0mu=undecided; \033[0;34mq\033[0m=quit; \033[0;33mi\033[0m=mark for inspection. \033[0m\n")
+        passwd_len = len(row[2])
+        #See if it's even valid
+        if selection == 'q':
+          QUIT_FOR_NOW = True
+          continue
+        elif selection in ['k','i']:
+          print("\033[0;33mKeeping\033[0m\n")
+          with open("vaultexports/keep.csv", 'a', newline='') as k:
+              writer = csv.writer(k, delimiter=',',
+                          quotechar='|', quoting=csv.QUOTE_MINIMAL)
+              writer.writerow(row)
+              if selection == 'i':
+                with open("vaultexports/inspect.csv", 'a', newline='') as k:
+                  writer = csv.writer(k, delimiter=',',
+                              quotechar='|', quoting=csv.QUOTE_MINIMAL)
+                  writer.writerow(row)
+              if passwd_len >= 12 or "jaco" in row[2] or "mingus" in row[2]:
+                print("\033[0;33mInsecure Passwd Alert\033[0m (storing in file)\n")
+                with open("vaultexports/insecure.csv", 'a', newline='') as k:
+                  writer = csv.writer(k, delimiter=',',
+                              quotechar='|', quoting=csv.QUOTE_MINIMAL)
+                  writer.writerow(row)
+        elif selection == 'a':
+          print("\033[0;31mArchiving\033[0m\n")
+          with open("vaultexports/archive.csv", 'a', newline='') as k:
+              writer = csv.writer(k, delimiter=',',
+                          quotechar='|', quoting=csv.QUOTE_MINIMAL)
+              writer.writerow(row)
+        elif selection == 'u':
+          print("Undecided")
+          with open("vaultexports/undecided.csv", 'a', newline='') as k:
+              writer = csv.writer(k, delimiter=',',
+                          quotechar='|', quoting=csv.QUOTE_MINIMAL)
+              writer.writerow(row)
+        else:
+          print("\033[0;31mArchiving by default\033[0m\n")
+          with open("vaultexports/archive.csv", 'a', newline='') as k:
+              writer = csv.writer(k, delimiter=',',
+                          quotechar='|', quoting=csv.QUOTE_MINIMAL)
+              writer.writerow(row)
+      else: #QUIT
+          filepath = "vaultexports/unparsed_"+ TODAY + ".csv"
+          with open(filepath, 'a', newline='') as k:
+            writer = csv.writer(k, delimiter=',',
                         quotechar='|', quoting=csv.QUOTE_MINIMAL)
             writer.writerow(row)
             continue
-      print(f"{row[1]} on {row[0].split("//")[1][:22]}") # Web Site
-      selection = input(f"#{idx}: \033[0;32mk\033[0m=keep; \033[0;31ma\033[0m=archive; \033[0;36m\033[0mu=undecided; \033[0;34mq\033[0m=quit; \033[0;33mi\033[0m=mark for inspection. \033[0m\n")
-      passwd_len = len(row[2])
-      if QUIT_FOR_NOW or selection == 'q':
-        QUIT_FOR_NOW = True
-        filepath = "vaultexports/unparsed_"+ TODAY + ".csv"
-        with open(filepath, 'a', newline='') as k:
-          writer = csv.writer(k, delimiter=',',
-                      quotechar='|', quoting=csv.QUOTE_MINIMAL)
-          writer.writerow(row)
-          continue
-      elif selection in ['k','i']:
-        print("\033[0;33mKeeping\033[0m\n")
-        with open("vaultexports/keep.csv", 'a', newline='') as k:
-            writer = csv.writer(k, delimiter=',',
-                        quotechar='|', quoting=csv.QUOTE_MINIMAL)
-            writer.writerow(row)
-            if selection == 'i':
-              with open("vaultexports/inspect.csv", 'a', newline='') as k:
-                writer = csv.writer(k, delimiter=',',
-                            quotechar='|', quoting=csv.QUOTE_MINIMAL)
-                writer.writerow(row)
-            if passwd_len >= 12 or "jaco" in row[2] or "mingus" in row[2]:
-              print("\033[0;33mInsecure Passwd Alert\033[0m (storing in file)\n")
-              with open("vaultexports/insecure.csv", 'a', newline='') as k:
-                writer = csv.writer(k, delimiter=',',
-                            quotechar='|', quoting=csv.QUOTE_MINIMAL)
-                writer.writerow(row)
-      elif selection == 'a':
-        print("\033[0;31mArchiving\033[0m\n")
-        with open("vaultexports/archive.csv", 'a', newline='') as k:
-            writer = csv.writer(k, delimiter=',',
-                        quotechar='|', quoting=csv.QUOTE_MINIMAL)
-            writer.writerow(row)
-      elif selection == 'u':
-        print("Undecided")
-        with open("vaultexports/undecided.csv", 'a', newline='') as k:
-            writer = csv.writer(k, delimiter=',',
-                        quotechar='|', quoting=csv.QUOTE_MINIMAL)
-            writer.writerow(row)
-      else:
-        print("\033[0;31mArchiving by default\033[0m\n")
-        with open("vaultexports/archive.csv", 'a', newline='') as k:
-            writer = csv.writer(k, delimiter=',',
-                        quotechar='|', quoting=csv.QUOTE_MINIMAL)
-            writer.writerow(row)
-      if QUIT_FOR_NOW:
           print(f"Done for now. Continue later with \033[0;32m{filepath}\033[0m\n")
     except IndexError:
       print("############\n\tBad one at line", idx)
