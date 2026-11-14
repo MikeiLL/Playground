@@ -23,7 +23,7 @@ if len(sys.argv) < 2:
 
 INPUT_FILE = sys.argv[1]
 QUIT_FOR_NOW = False
-TODAY = dt.date.today().strftime('%F')
+NOW = dt.datetime.now().strftime('%Y-%m-%dat%H:%M:%S')
 """ ANSI color codes """
 BLACK = "\033[0;30m"
 RED = "\033[0;31m"
@@ -43,7 +43,6 @@ with open(INPUT_FILE, newline='') as i:
   for idx, row in enumerate(data):
     try:
       if not QUIT_FOR_NOW:
-        print("NOT QUIT_FOR_NOW")
         if not row[0].startswith("http"):
           print("Adding note")
           time.sleep(0.5)
@@ -62,12 +61,13 @@ with open(INPUT_FILE, newline='') as i:
           print(f"STATUS: {color}{r.status_code}\033[0m")
         except Exception as e:
           print(f"\033[0;33mCould not connect to site: {row[0]} ({e})\033[0m")
-        selection = input(f"#{idx}: \033[0;32mk\033[0m=keep; \033[0;31ma\033[0m=archive; \033[0;36m\033[0mu=undecided; \033[0;34mq\033[0m=quit; \033[0;33mi\033[0m=mark for inspection. \033[0m\n")
+        selection = input(f"#{idx}: \033[0;32mk\033[0m=keep; \033[0;31ma\033[0m=archive; \033[0;36m\033[0md=discard; \033[0;36m\033[0mu=undecided; \033[0;34mq\033[0m=quit; \033[0;33mi\033[0m=mark for inspection. \033[0m\n")
         passwd_len = len(row[2])
         #See if it's even valid
         if selection == 'q':
           QUIT_FOR_NOW = True
           continue
+        if selection == 'd': print(f'Discarding {row[0].split("//")[1][:22]}'); continue
         elif selection in ['k','i']:
           print("\033[0;33mKeeping\033[0m\n")
           with open("vaultexports/keep.csv", 'a', newline='') as k:
@@ -104,7 +104,7 @@ with open(INPUT_FILE, newline='') as i:
                           quotechar='|', quoting=csv.QUOTE_MINIMAL)
               writer.writerow(row)
       else: #QUIT
-          filepath = "vaultexports/unparsed_"+ TODAY + ".csv"
+          filepath = "vaultexports/unparsed_"+ NOW + ".csv"
           with open(filepath, 'a', newline='') as k:
             writer = csv.writer(k, delimiter=',',
                         quotechar='|', quoting=csv.QUOTE_MINIMAL)
