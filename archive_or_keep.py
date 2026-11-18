@@ -51,7 +51,7 @@ with open(INPUT_FILE, newline='') as i:
                           quotechar='|', quoting=csv.QUOTE_MINIMAL)
               writer.writerow(row)
               continue
-        print(f"{row[1]} on {row[0].split("//")[1][:22]}") # Web Site
+        print(f"\n\033[0;36m  → {row[1]} on {row[0].split("//")[1][:22]}\033[0;0m\n") # Web Site
         try:
           print("CONNECTING...")
           r = requests.head(row[0], timeout=2)
